@@ -1,0 +1,67 @@
+Development Workflow
+
+Follow this order.
+
+Step 1
+
+Create project structure.
+
+Step 2
+
+Implement document reader.
+
+Test it.
+
+Stop.
+
+Step 3
+
+Implement regex detectors.
+
+Test them.
+
+Stop.
+
+Step 4
+
+Implement NER detectors.
+
+Test them.
+
+Stop.
+
+Step 5
+
+Implement replacement system.
+
+Test consistency.
+
+Stop.
+
+Step 6
+
+Implement document writer.
+
+Generate output.
+
+Stop.
+
+Step 7
+
+Implement evaluation module.
+
+Stop.
+
+Step 8
+
+Write README.
+
+Step 9
+
+Refactor.
+
+Step 10
+
+Final review.
+
+

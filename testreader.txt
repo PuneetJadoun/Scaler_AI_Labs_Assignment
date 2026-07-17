@@ -1,0 +1,158 @@
+We have completed the Document Module.
+
+Before implementing the Detector module, I want to thoroughly test the Document Module independently.
+
+Do NOT implement the Detector.
+
+Do NOT modify the Reader implementation unless you discover a genuine bug.
+
+==========================================================
+CURRENT STRUCTURE
+==========================================================
+
+PII-redaction-tool/
+
+input/
+    Red_Herring_Prospectus.docx
+
+output/
+reports/
+
+src/
+
+document/
+│
+├── reader.py
+├── writer.py
+│
+└── models/
+    ├── document.py
+    ├── paragraph.py
+    ├── table.py
+    └── cell.py
+
+tests/
+
+==========================================================
+OBJECTIVE
+==========================================================
+
+Create a test that verifies the Document Reader works correctly.
+
+The purpose is to validate the architecture before building the Detector module.
+
+==========================================================
+TEST REQUIREMENTS
+==========================================================
+
+Create
+
+tests/test_reader.py
+
+The test should
+
+1. Load the document from the input folder.
+
+2. Call reader.read_document().
+
+3. Verify that a DocumentData object is returned.
+
+4. Print useful information such as
+
+- Number of paragraphs
+- Number of tables
+- Number of rows in every table
+- Number of cells in every row
+
+5. Print the first few paragraphs.
+
+6. Print the first few table cells.
+
+7. Verify that no exceptions occur.
+
+8. Print a clear success message.
+
+==========================================================
+VALIDATIONS
+==========================================================
+
+Verify
+
+✓ Document loads successfully
+
+✓ Paragraph extraction works
+
+✓ Table extraction works
+
+✓ Dataclasses are populated correctly
+
+✓ Empty paragraphs are handled correctly
+
+✓ Empty cells are handled correctly
+
+==========================================================
+OUTPUT
+==========================================================
+
+The output should be human readable.
+
+For example
+
+=========================================
+Document Summary
+=========================================
+
+Paragraphs : XX
+
+Tables : XX
+
+Table 1
+
+Rows : XX
+
+Columns : XX
+
+-----------------------------------------
+
+First Paragraph
+
+...
+
+-----------------------------------------
+
+First Table Cell
+
+...
+
+=========================================
+
+Document Reader Test Passed
+
+==========================================================
+CODE QUALITY
+==========================================================
+
+Use
+
+- pathlib
+- proper imports
+- type hints
+- descriptive print statements
+
+Do not use unittest or pytest yet.
+
+Keep it as a simple executable validation script because this is an architectural verification step.
+
+==========================================================
+AFTER IMPLEMENTATION
+==========================================================
+
+Explain
+
+1. Why every validation exists.
+
+2. What bugs this test would catch.
+
+3. Whether the Document Module is ready for the Detector module.
+
+4. Suggest any architectural improvements if discovered during testing.

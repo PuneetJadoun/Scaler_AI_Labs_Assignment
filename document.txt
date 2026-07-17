@@ -1,0 +1,301 @@
+We are building a production-quality Python project for a Scaler AI Labs SDE Internship assignment.
+
+We will build the project incrementally.
+
+Do NOT generate the entire project.
+
+We are currently implementing ONLY the Document Module.
+
+=========================================================
+CURRENT PROJECT STRUCTURE
+=========================================================
+
+PII-redaction-tool/
+
+input/
+output/
+reports/
+tests/
+
+src/
+
+document/
+│
+├── __init__.py
+├── reader.py
+├── writer.py
+│
+└── models/
+    ├── __init__.py
+    ├── document.py
+    ├── paragraph.py
+    ├── table.py
+    └── cell.py
+
+detectors/
+replacement/
+evaluation/
+utils/
+
+main.py
+
+=========================================================
+PROJECT GOAL
+=========================================================
+
+The complete application pipeline will be
+
+Input DOCX
+
+↓
+
+Document Reader
+
+↓
+
+Detector Module
+
+↓
+
+Replacement Module
+
+↓
+
+Writer Module
+
+↓
+
+Output DOCX
+
+We are implementing ONLY the first stage.
+
+=========================================================
+OBJECTIVE
+=========================================================
+
+Design and implement the complete Document Module.
+
+The module should ONLY be responsible for reading Microsoft Word (.docx) files and converting them into structured Python objects.
+
+The module must NOT perform
+
+- Regex
+- spaCy
+- Presidio
+- PII Detection
+- Faker
+- Replacement
+- Evaluation
+- Reporting
+
+The module should only know how to work with Word documents.
+
+=========================================================
+ABOUT THE INPUT DOCUMENT
+=========================================================
+
+The input document contains
+
+- Normal paragraphs
+- Tables
+- Company names
+- Addresses
+- Phone numbers
+- Email addresses
+- Headings
+
+Much of the important information exists inside tables.
+
+Therefore the reader must extract BOTH paragraphs and tables.
+
+A paragraph-only reader is not acceptable.
+
+=========================================================
+INPUT
+=========================================================
+
+The input document will always come from the project's
+
+input/
+
+directory.
+
+reader.py should accept a Path object or file path.
+
+Do not hardcode filenames.
+
+Use pathlib.
+
+=========================================================
+ARCHITECTURE
+=========================================================
+
+Implement the following architecture.
+
+models/
+
+document.py
+
+Represents the entire document.
+
+It should contain the complete structured representation returned by reader.py.
+
+---------------------------------------------------------
+
+paragraph.py
+
+Represents one paragraph.
+
+Every paragraph should contain at minimum
+
+- unique id
+- text
+
+---------------------------------------------------------
+
+table.py
+
+Represents one table.
+
+A table should contain rows.
+
+---------------------------------------------------------
+
+cell.py
+
+Represents table rows and cells.
+
+Design a clean architecture for rows and cells.
+
+Do not use nested dictionaries.
+
+Use dataclasses.
+
+=========================================================
+READER
+=========================================================
+
+reader.py should expose ONE public function.
+
+Example
+
+read_document(path)
+
+It should
+
+1. Validate input.
+
+2. Open DOCX using python-docx.
+
+3. Read all paragraphs.
+
+4. Read all tables.
+
+5. Populate all dataclasses.
+
+6. Return one Document object.
+
+Hide every python-docx implementation detail from the rest of the application.
+
+Future modules should never interact with python-docx directly.
+
+=========================================================
+ERROR HANDLING
+=========================================================
+
+Handle
+
+- missing file
+- invalid path
+- non-docx file
+- corrupted document
+- empty document
+
+Raise meaningful exceptions.
+
+=========================================================
+CODING STANDARDS
+=========================================================
+
+Use
+
+- Python dataclasses
+- pathlib
+- type hints
+- docstrings
+- clean naming
+- small functions
+
+Follow
+
+- SOLID
+- Single Responsibility Principle
+- Separation of Concerns
+- Clean Architecture
+
+Avoid
+
+- long functions
+- duplicated code
+- giant classes
+- magic values
+
+=========================================================
+BEFORE IMPLEMENTATION
+=========================================================
+
+Before writing any code
+
+Explain
+
+1. The architecture.
+
+2. Every model.
+
+3. Why every model exists.
+
+4. How reader.py interacts with every model.
+
+5. How detector.py will later consume the Document object.
+
+6. How writer.py will later use the same models.
+
+If you think any model should be modified, explain the reason first.
+
+=========================================================
+IMPLEMENTATION
+=========================================================
+
+Implement ONLY
+
+- models/document.py
+- models/paragraph.py
+- models/table.py
+- models/cell.py
+- reader.py
+
+Do NOT implement writer.py.
+
+Do NOT implement detectors.
+
+Do NOT implement replacement.
+
+Do NOT implement evaluation.
+
+=========================================================
+AFTER IMPLEMENTATION
+=========================================================
+
+After writing the code
+
+Explain
+
+- every class
+- every dataclass
+- every field
+- every function
+- every design decision
+
+I want to understand the architecture before moving to the Detector module.
+
+Write production-quality code as if this project will later grow into a larger system.
