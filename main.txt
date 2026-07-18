@@ -1,0 +1,179 @@
+The Reader, Detector, Replacement, and Writer modules have all been implemented and individually validated.
+
+Now implement ONLY the final integration layer using main.py.
+
+Do NOT modify any existing module unless a genuine integration bug is discovered.
+
+==========================================================
+OBJECTIVE
+==========================================================
+
+Implement main.py as the application's entry point.
+
+main.py must ONLY orchestrate the execution of the existing modules.
+
+It must contain NO business logic.
+
+==========================================================
+PIPELINE
+==========================================================
+
+The execution flow should be
+
+User specifies input document
+
+↓
+
+Reader
+
+↓
+
+Detector
+
+↓
+
+Replacement
+
+↓
+
+Writer
+
+↓
+
+Output DOCX
+
+==========================================================
+RESPONSIBILITIES
+==========================================================
+
+main.py should
+
+1. Accept the input DOCX path.
+
+2. Validate that the file exists.
+
+3. Call the Reader.
+
+4. Call the Detector.
+
+5. Call the Replacement Module.
+
+6. Call the Writer Module.
+
+7. Save the redacted document inside
+
+output/
+
+8. Log the progress of every stage.
+
+9. Handle exceptions gracefully.
+
+==========================================================
+EXPECTED CONSOLE OUTPUT
+==========================================================
+
+============================================
+
+PII REDACTION TOOL
+
+============================================
+
+Input File
+
+input/Red_Herring_Prospectus.docx
+
+--------------------------------------------
+
+Reading document...
+
+✓ Completed
+
+--------------------------------------------
+
+Detecting PII...
+
+✓ Completed
+
+--------------------------------------------
+
+Replacing PII...
+
+✓ Completed
+
+--------------------------------------------
+
+Writing redacted document...
+
+✓ Completed
+
+--------------------------------------------
+
+Output File
+
+output/Red_Herring_Prospectus_redacted.docx
+
+--------------------------------------------
+
+Pipeline Completed Successfully
+
+============================================
+
+==========================================================
+ERROR HANDLING
+==========================================================
+
+Gracefully handle
+
+- Missing input file
+
+- Invalid file type
+
+- Reader failure
+
+- Detector failure
+
+- Replacement failure
+
+- Writer failure
+
+Provide meaningful error messages.
+
+==========================================================
+CODE QUALITY
+==========================================================
+
+Use
+
+- pathlib
+
+- logging
+
+- type hints
+
+- docstrings
+
+Keep main.py extremely small.
+
+It should simply orchestrate the existing modules.
+
+==========================================================
+DO NOT
+==========================================================
+
+Do not move business logic into main.py.
+
+Do not duplicate logic already implemented elsewhere.
+
+Do not modify Reader, Detector, Replacement, or Writer unless necessary to fix an integration issue.
+
+==========================================================
+AFTER IMPLEMENTATION
+==========================================================
+
+Explain
+
+1. How main.py orchestrates the pipeline.
+
+2. Why no business logic belongs inside main.py.
+
+3. Confirm that the project is now ready for end-to-end execution.
