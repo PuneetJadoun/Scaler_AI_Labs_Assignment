@@ -1,0 +1,282 @@
+The Document Module and Detector Module have been completed and successfully validated.
+
+Now implement ONLY the Replacement Module.
+
+Do NOT modify the Document Module.
+
+Do NOT modify the Detector Module.
+
+Do NOT implement the Writer Module.
+
+Do NOT implement the Evaluation Module.
+
+Do NOT modify main.py.
+
+==========================================================
+CURRENT STATUS
+==========================================================
+
+Completed
+
+✓ Document Reader
+✓ Document Models
+✓ Detector Module
+✓ Detector Validation
+
+Next Module
+
+Replacement
+
+==========================================================
+OBJECTIVE
+==========================================================
+
+Implement a modular Replacement Module.
+
+The Replacement Module should receive
+
+- DocumentData
+- List[Entity]
+
+and replace detected PII with realistic fake values.
+
+The module must modify ONLY the in-memory DocumentData object.
+
+It must NEVER write a DOCX file.
+
+That responsibility belongs to Writer.
+
+==========================================================
+CREATE THE FOLLOWING STRUCTURE
+==========================================================
+
+replacement/
+
+├── __init__.py
+
+├── replacement_manager.py
+
+├── faker_provider.py
+
+└── replacers/
+
+    ├── __init__.py
+
+    ├── person_replacer.py
+
+    ├── email_replacer.py
+
+    ├── phone_replacer.py
+
+    ├── company_replacer.py
+
+    ├── address_replacer.py
+
+    ├── ssn_replacer.py
+
+    ├── credit_card_replacer.py
+
+    ├── dob_replacer.py
+
+    └── ip_replacer.py
+
+==========================================================
+RESPONSIBILITIES
+==========================================================
+
+replacement_manager.py
+
+Responsible for
+
+- receiving DocumentData
+- receiving List[Entity]
+- selecting the appropriate replacer
+- updating paragraphs
+- updating table cells
+- returning the modified DocumentData
+
+No replacement logic should exist here.
+
+Only orchestration.
+
+==========================================================
+FAKER PROVIDER
+==========================================================
+
+Implement faker_provider.py.
+
+Use the Faker library.
+
+Generate realistic replacements.
+
+Examples
+
+John Smith
+
+↓
+
+Michael Brown
+
+----------------------------------
+
+john@gmail.com
+
+↓
+
+alex89@gmail.com
+
+----------------------------------
+
+Google LLC
+
+↓
+
+TechNova Inc.
+
+==========================================================
+INDIVIDUAL REPLACERS
+==========================================================
+
+Each replacer should replace exactly ONE entity type.
+
+Each replacer should expose one public function.
+
+Example
+
+replace_email()
+
+replace_phone()
+
+replace_person()
+
+Every replacer should
+
+- receive the original Entity
+- generate a replacement
+- return the replacement value
+
+==========================================================
+CONSISTENCY REQUIREMENT
+==========================================================
+
+The same original value should always map to the same replacement within a single document.
+
+Example
+
+Original
+
+John Smith
+
+Paragraph 2
+
+John Smith
+
+Paragraph 18
+
+↓
+
+Both become
+
+Michael Brown
+
+Never generate different fake names for the same original entity within one document.
+
+Maintain an internal mapping cache.
+
+==========================================================
+DOCUMENT UPDATE
+==========================================================
+
+Replacement must work for
+
+✓ Paragraphs
+
+✓ Tables
+
+✓ Table Cells
+
+==========================================================
+ERROR HANDLING
+==========================================================
+
+Gracefully handle
+
+- Empty documents
+
+- Empty paragraphs
+
+- Empty cells
+
+- Unsupported entity types
+
+- Missing Faker installation
+
+==========================================================
+DESIGN REQUIREMENTS
+==========================================================
+
+Follow
+
+- SOLID Principles
+
+- Single Responsibility Principle
+
+- Separation of Concerns
+
+- Clean Architecture
+
+==========================================================
+CODE QUALITY
+==========================================================
+
+Use
+
+- dataclasses where appropriate
+
+- type hints
+
+- logging
+
+- pathlib where appropriate
+
+- comprehensive docstrings
+
+Avoid print statements.
+
+==========================================================
+DO NOT
+==========================================================
+
+Do not modify reader.py.
+
+Do not modify detector.py.
+
+Do not modify Entity.
+
+Do not implement Writer.
+
+Do not implement Evaluation.
+
+Do not implement main.py.
+
+Do not generate validation scripts.
+
+Only implement the Replacement Module.
+
+==========================================================
+AFTER IMPLEMENTATION
+==========================================================
+
+Explain
+
+1. Responsibility of every file.
+
+2. How replacement_manager works.
+
+3. How replacement consistency is maintained.
+
+4. How the same entity always receives the same fake value.
+
+5. How the modified DocumentData will later be passed to Writer.
+
+6. Confirm the module is ready for validation.
